@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,8 +25,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
+Route::get('/admin', function () {
+    return Inertia::render('Home', [
         'title' => 'Dashboard'
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,3 +40,12 @@ Route::get('/account', function () {
 Route::post('/notify', function () {
     return back()->toast('This notification comes from the server side =)');
 });
+
+
+Route::get('/sites', [SiteController::class, 'index'])->middleware(['auth', 'verified'])->name('sites');
+Route::get('/site', [SiteController::class, 'create'])->middleware(['auth', 'verified'])->name('criar.site');
+Route::post('/site', [SiteController::class, 'store'])->middleware(['auth', 'verified'])->name('criar.site');
+Route::get('/site/{id}', [SiteController::class, 'destroy'])->middleware(['auth', 'verified'])->name('remover.site');
+Route::get('/site/{id}/edit', [SiteController::class, 'edit'])->middleware(['auth', 'verified'])->name('editar.site');
+Route::post('/site/{id}/edit', [SiteController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.site');
+Route::get('/users', [SiteController::class, 'index'])->middleware(['auth', 'verified'])->name('usuarios');

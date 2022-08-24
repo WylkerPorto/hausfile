@@ -1,4 +1,4 @@
-<template layout="Authenticated">
+<template layout="Dashboard">
   <Head :title="title" />
 
   <h1 class="text-h4">

@@ -1,4 +1,4 @@
-<template layout="Authenticated">
+<template layout="Dashboard">
   <Head :title="title" />
 
   <h1 class="text-h4 tw-mb-6">
@@ -10,19 +10,18 @@
   </p>
 
   <p class="text-body-1">
-    Checkout the <span class="tw-bg-gray-200 tw-rounded tw-p-1">routes/web.php</span> file to see how does it work.
+    Checkout the
+    <span class="tw-bg-gray-200 tw-rounded tw-p-1">routes/web.php</span> file to
+    see how does it work.
   </p>
 
-  <q-btn
-    color="positive"
-    @click="$inertia.post('/notify')"
-  >
+  <q-btn color="positive" @click="$inertia.post('/notify')">
     Success toast
   </q-btn>
 </template>
 
 <script setup>
 defineProps({
-  title: String
-})
+  title: String,
+});
 </script>

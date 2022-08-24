@@ -3,14 +3,8 @@
     class="tw-min-w-[300px] tw-p-0 tw-bg-none tw-border-none tw-m-6"
     position="bottom right"
   >
-    <template
-      #body="{ item, close }"
-    >
-      <Alert
-        class="tw-m-2"
-        :type="item.type"
-        @dismiss="close"
-      >
+    <template #body="{ item, close }">
+      <Alert class="tw-m-2" :type="item.type" @dismiss="close">
         {{ item.text }}
       </Alert>
     </template>
@@ -18,24 +12,23 @@
 </template>
 
 <script setup>
-import { notify } from '@kyvg/vue3-notification'
+import { notify } from "@kyvg/vue3-notification";
 
-const $page = usePage()
+const $page = usePage();
 
 const toasts = computed(() => {
-  return $page.props.value.toasts
-})
+  return $page.props.value.toasts;
+});
 
 const renderToasts = (toastsSource) => {
   toastsSource.forEach((toast) => {
-    console.log('test')
-    notify(toast)
-  })
-}
+    notify(toast);
+  });
+};
 
-onMounted(() => renderToasts(toasts.value))
+onMounted(() => renderToasts(toasts.value));
 
 watch(toasts, (newToasts) => {
-  renderToasts(newToasts)
-})
+  renderToasts(newToasts);
+});
 </script>
