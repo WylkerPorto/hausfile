@@ -22,6 +22,6 @@ class EmailVerificationNotificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->toast('A new verification link has been sent to the email address you provided during registration.');
+        return back()->toast('Um novo link de verificação foi enviado para o endereço de e-mail fornecido durante o registro.');
     }
 }

@@ -23,18 +23,18 @@
       v-model="form.password"
       :error-message="errors.password"
       :error="!!errors.password"
-      label="Password"
+      label="Senha"
       type="password"
       autocomplete="current-password"
       required
       outlined
     />
 
-    <q-checkbox v-model="form.remember" label="Remember me" />
+    <q-checkbox v-model="form.remember" label="Lembrar" />
 
     <div class="tw-flex tw-items-center tw-justify-between">
       <Link v-if="canResetPassword" :href="route('password.request')">
-        Forgot your password?
+        Esqueceu a senha?
       </Link>
 
       <q-btn
@@ -43,7 +43,7 @@
         color="primary"
         class="ml-4"
       >
-        Log in
+        Entrar
       </q-btn>
     </div>
   </form>

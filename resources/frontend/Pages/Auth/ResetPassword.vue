@@ -11,7 +11,7 @@
       :error-message="errors.password"
       :error="!!errors.password"
       type="password"
-      label="Password"
+      label="Senha"
       autocomplete="new-password"
       outlined
     />
@@ -21,7 +21,7 @@
       v-model="form.password_confirmation"
       :error-message="errors.password_confirmation"
       :error="!!errors.password_confirmation"
-      label="Password confirmation"
+      label="Confirmar senha"
       type="password"
       autocomplete="new-password"
       outlined
@@ -29,7 +29,7 @@
 
     <div class="tw-flex tw-items-center tw-justify-end">
       <q-btn :disabled="form.processing" type="submit" color="primary">
-        Reset Password
+        Resetar senha
       </q-btn>
     </div>
   </form>

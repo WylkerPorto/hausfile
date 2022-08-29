@@ -23,7 +23,7 @@ class VerifyEmailController extends Controller
         }
 
         if ($request->user()->markEmailAsVerified()) {
-            Toast::success('Thanks! Your email has been verified.');
+            Toast::success('Obrigado! Seu e-mail foi verificado.');
 
             event(new Verified($request->user()));
         }

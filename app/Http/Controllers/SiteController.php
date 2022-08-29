@@ -24,7 +24,7 @@ class SiteController extends Controller
             unset($site->id);
         }
         $data = ['title' => 'Sites', 'sites' => $sites];
-        return Inertia::render('Sites', $data);
+        return Inertia::render('Admin/Sites', $data);
     }
 
     /**
@@ -41,7 +41,7 @@ class SiteController extends Controller
             'description' => '',
             'active' => false
         ]];
-        return Inertia::render('Site', $data);
+        return Inertia::render('Admin/Site', $data);
     }
 
     /**
@@ -79,7 +79,7 @@ class SiteController extends Controller
         unset($site->id);
         $site->uid = $id;
         $data = ['title' => 'Editar site ' . $site->name, 'site' => $site];
-        return Inertia::render('Site', $data);
+        return Inertia::render('Admin/Site', $data);
     }
 
     /**

@@ -2,9 +2,9 @@
   <Head title="Forgot Password" />
 
   <div class="tw-mb-6 tw-text-gray-600">
-    Forgot your password? No problem. Just let us know your email address and we
-    will email you a password reset link that will allow you to choose a new
-    one.
+    Esqueceu sua senha? Sem problemas. Basta nos informar seu endereço de e-mail
+    e nós lhe enviaremos um link de redefinição de senha que permitirá que você
+    escolha uma nova.
   </div>
 
   <form
@@ -26,7 +26,7 @@
 
     <div class="tw-flex tw-items-center tw-justify-end">
       <q-btn :disabled="form.processing" type="submit" color="primary">
-        Email Password Reset Link
+        Link de redefinição de senha de email
       </q-btn>
     </div>
   </form>

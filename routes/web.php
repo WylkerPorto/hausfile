@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,30 +16,13 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/admin', function () {
-    return Inertia::render('Home', [
-        'title' => 'Dashboard'
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/account', function () {
-    return Inertia::render('Account', [
-        'title' => 'My Account'
-    ]);
-})->middleware(['auth', 'verified'])->name('account.index');
-
 Route::post('/notify', function () {
-    return back()->toast('This notification comes from the server side =)');
+    return back()->toast('Notificação');
 });
+Route::get('/', [HomeController::class, 'home']);
+
+Route::get('/admin', [HomeController::class, 'admin'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/account', [HomeController::class, 'profile'])->middleware(['auth', 'verified'])->name('perfil');
 
 
 Route::get('/sites', [SiteController::class, 'index'])->middleware(['auth', 'verified'])->name('sites');

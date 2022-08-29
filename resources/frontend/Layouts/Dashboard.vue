@@ -27,10 +27,7 @@
           </template>
 
           <q-list>
-            <NavLink
-              :href="route('account.index')"
-              class="tw-w-full tw-text-left"
-            >
+            <NavLink :href="route('perfil')" class="tw-w-full tw-text-left">
               <template #icon="icon">
                 <i-mdi-account-circle-outline v-bind="icon" />
               </template>
@@ -101,7 +98,7 @@
     ref="loadingIndicator"
     position="top"
     color="info"
-    size="2px"
+    size="15px"
     skip-hijack
   />
   <div class="tw-w-full" v-show="load">
@@ -122,15 +119,11 @@ import { Inertia } from "@inertiajs/inertia";
 const loadingIndicator = ref(null);
 let load = ref(false);
 
-Inertia.on("start", () => {
-  load = true;
-  // loadingIndicator.value.start();
-});
+Inertia.on("start", () => loadingIndicator.value.start());
+Inertia.on("start", () => (load = true));
 
-Inertia.on("finish", () => {
-  load = false;
-  // loadingIndicator.value.stop();
-});
+Inertia.on("finish", () => loadingIndicator.value.stop());
+Inertia.on("finish", () => (load = false));
 
 const leftDrawerOpen = ref(false);
 
