@@ -34,7 +34,7 @@ class SiteController extends Controller
      */
     public function create()
     {
-        $data = ['title' => 'Criar site', 'site' => [
+        $data = ['title' => 'Criar site', 'form' => [
             'name' => '',
             'url' => '',
             'tags' => '',
@@ -52,7 +52,7 @@ class SiteController extends Controller
      */
     public function store(StoreSiteRequest $request)
     {
-        $site = Site::create($request->all());
+        Site::create($request->all());
         return redirect()->route('sites')->toast('Site criado');
     }
 
@@ -78,7 +78,7 @@ class SiteController extends Controller
         $site = $site->findOrFail(HashService::decode($id));
         unset($site->id);
         $site->uid = $id;
-        $data = ['title' => 'Editar site ' . $site->name, 'site' => $site];
+        $data = ['title' => 'Editar site ' . $site->name, 'form' => $site];
         return Inertia::render('Admin/Site', $data);
     }
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,5 +31,12 @@ Route::get('/site', [SiteController::class, 'create'])->middleware(['auth', 'ver
 Route::post('/site', [SiteController::class, 'store'])->middleware(['auth', 'verified'])->name('criar.site');
 Route::get('/site/{id}', [SiteController::class, 'destroy'])->middleware(['auth', 'verified'])->name('remover.site');
 Route::get('/site/{id}/edit', [SiteController::class, 'edit'])->middleware(['auth', 'verified'])->name('editar.site');
-Route::post('/site/{id}/edit', [SiteController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.site');
-Route::get('/users', [SiteController::class, 'index'])->middleware(['auth', 'verified'])->name('usuarios');
+Route::put('/site/{id}/edit', [SiteController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.site');
+
+
+Route::get('/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('usuarios');
+Route::get('/user', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('criar.usuario');
+Route::post('/user', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('criar.usuario');
+Route::get('/user/{id}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('remover.usuario');
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('editar.usuario');
+Route::put('/user/{id}/edit', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.usuario');

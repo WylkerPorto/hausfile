@@ -2,32 +2,40 @@
   <Head :title="title" />
   <section>
     <div>
-      <Link :href="route('criar.site')" class="q-btn">
-        <i-mdi-web />
-        Novo site
+      <Link :href="route('criar.usuario')" class="q-btn">
+        <i-mdi-user />
+        Novo usuário
       </Link>
     </div>
     <ul>
-      <li v-for="site in sites.data" :key="site.uid">
+      <li
+        v-for="usuario in usuarios.data"
+        :key="usuario.uid"
+        v-bind:class="{ admin: usuario.is_admin }"
+      >
         <div>
-          <p>Nome: {{ site.name }}</p>
-          <span>Criado: {{ moment(site.created_at).format("L") }}</span>
-          <a :href="site.url" target="_blank">Ver <i-mdi-open-in-new /></a>
+          <p>Nome: {{ usuario.name }}</p>
+          <p>Email: {{ usuario.email }}</p>
+          <span>Criado: {{ moment(usuario.created_at).format("L") }}</span>
         </div>
         <div class="buttongroup">
-          <Link :href="route('editar.site', site.uid)"><i-mdi-edit /></Link>
-          <Link :href="route('remover.site', site.uid)"><i-mdi-delete /></Link>
+          <Link :href="route('editar.usuario', usuario.uid)">
+            <i-mdi-edit />
+          </Link>
+          <Link :href="route('remover.usuario', usuario.uid)">
+            <i-mdi-delete />
+          </Link>
         </div>
       </li>
     </ul>
   </section>
-  <Paginator :paginate="sites" />
+  <Paginator :paginate="usuarios" />
 </template>
 
 <script setup>
 const props = defineProps({
   title: String,
-  sites: Object,
+  usuarios: Object,
 });
 import moment from "moment";
 </script>
@@ -45,23 +53,23 @@ section > div {
   }
 }
 li {
-  @apply tw-flex tw-flex-nowrap tw-p-2 tw-justify-between hover:tw-bg-neutral-100;
+  @apply tw-flex tw-flex-nowrap tw-p-2 tw-mb-2 tw-justify-between hover:tw-bg-neutral-100;
+
+  &.admin {
+    @apply tw-border-yellow-400 tw-border;
+  }
 
   div:first-child {
     p {
       @apply tw-text-2xl tw-font-thin tw-text-blue-900 tw-mb-0;
+
+      &:nth-child(2) {
+        @apply tw-text-gray-600 tw-text-sm;
+      }
     }
 
     span {
       @apply tw-text-gray-500 tw-text-xs;
-    }
-
-    a {
-      @apply tw-text-lime-800 tw-block;
-
-      svg {
-        @apply tw-inline;
-      }
     }
   }
 

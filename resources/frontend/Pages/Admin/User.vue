@@ -3,13 +3,13 @@
   <form
     @submit.prevent="
       form.uid
-        ? form.put(route('editar.site', form.uid))
-        : form.post(route('criar.site'))
+        ? form.put(route('editar.usuario', form.uid))
+        : form.post(route('criar.usuario'))
     "
   >
     <q-toggle
-      v-model="form.active"
-      label="Site ativo"
+      v-model="form.is_admin"
+      label="Usuário administrador"
       :error-message="errors.url"
       :error="!!errors.url"
     />
@@ -26,42 +26,45 @@
       outlined
     />
     <q-input
-      id="url"
-      v-model="form.url"
-      :error-message="errors.url"
-      :error="!!errors.url"
-      label="Url"
-      type="url"
-      autocomplete="url"
+      id="email"
+      v-model="form.email"
+      :error-message="errors.email"
+      :error="!!errors.email"
+      label="Email"
+      type="email"
+      autocomplete="email"
       required
       outlined
     />
-
     <q-input
-      id="tags"
-      v-model="form.tags"
-      :error-message="errors.tags"
-      :error="!!errors.tags"
-      label="Meta Tags"
-      type="textarea"
-      autocomplete="current-tags"
+      v-if="!form.uid"
+      id="password"
+      v-model="form.password"
+      :error-message="errors.password"
+      :error="!!errors.password"
+      label="Senha"
+      type="password"
+      autocomplete="password"
+      required
       outlined
     />
-
-    <q-input
-      id="description"
-      v-model="form.description"
-      :error-message="errors.description"
-      :error="!!errors.description"
-      label="Descrição"
-      type="textarea"
-      autocomplete="current-description"
+    <q-select
+      id="site_id"
+      v-model="form.site_id"
+      :options="sites"
+      option-value="uid"
+      option-label="name"
+      :error-message="errors.site_id"
+      :error="!!errors.site_id"
+      label="Site"
+      emit-value
+      map-options
       outlined
     />
     <div>
       <Link
         :disabled="form.processing"
-        :href="route('sites')"
+        :href="route('usuarios')"
         class="q-btn q-btn--flat"
       >
         Cancelar
@@ -78,11 +81,12 @@
 const props = defineProps({
   title: String,
   form: Object,
+  sites: Object,
   errors: Object,
 });
 
 const form = useForm(props.form);
-form.active = !!form.active;
+form.is_admin = !!form.is_admin;
 </script>
 
 <style lang='scss' scoped>

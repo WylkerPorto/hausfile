@@ -79,7 +79,7 @@
             :active="route().current('usuarios')"
           >
             <template #icon="icon">
-              <i-mdi-user v-bind="icon" />
+              <i-mdi-users v-bind="icon" />
             </template>
             Usuarios
           </NavLink>
