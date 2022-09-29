@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SiteSeeder extends Seeder
+class ImageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,6 @@ class SiteSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Site::factory(15)->hasImage(2)->create();
-        \App\Models\Site::factory(15)->inactive()->create();
+        //
     }
 }

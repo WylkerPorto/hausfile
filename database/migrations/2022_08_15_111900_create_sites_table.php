@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sites', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->text('name');
             $table->text('url')->uniqid();
             $table->longText('tags')->nullable();

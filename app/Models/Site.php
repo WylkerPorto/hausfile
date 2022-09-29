@@ -28,4 +28,16 @@ class Site extends Model
      * @var array<int, string>
      */
     protected $hidden = [];
+
+    /**
+     * Get the image associated with the site.
+     * 
+     * Syntax: return $this->hasMany(Image::class, 'foreign_key', 'local_key');
+     *
+     * Example: return $this->hasMany(Image::class, 'user_id', 'id');        
+     */
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

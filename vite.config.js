@@ -20,13 +20,14 @@ export default {
         {
           '@inertiajs/inertia': [
             'Inertia'
-          ]
-        },
-        {
+          ],
           '@inertiajs/inertia-vue3': [
             'usePage',
             'useForm'
-          ]
+          ],
+          'axios': [
+            ['default', 'axios'],
+          ],
         }
       ]
     }),

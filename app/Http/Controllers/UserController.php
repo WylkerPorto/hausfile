@@ -120,7 +120,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user, $id)
     {
         $input = $request->all();
-        $input['site_id'] = HashService::decode($request->site_id);
+        $input['site_id'] = $request->site_id ? HashService::decode($request->site_id) : null;
         $user = $user->findOrFail(HashService::decode($id));
         $user->fill($input)->save();
         return redirect()->route('usuarios')->toast('Usuário atualizado');

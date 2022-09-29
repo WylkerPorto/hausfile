@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +29,10 @@ Route::get('/account', [HomeController::class, 'profile'])->middleware(['auth', 
 Route::get('/sites', [SiteController::class, 'index'])->middleware(['auth', 'verified'])->name('sites');
 Route::get('/site', [SiteController::class, 'create'])->middleware(['auth', 'verified'])->name('criar.site');
 Route::post('/site', [SiteController::class, 'store'])->middleware(['auth', 'verified'])->name('criar.site');
-Route::get('/site/{id}', [SiteController::class, 'destroy'])->middleware(['auth', 'verified'])->name('remover.site');
+Route::delete('/site/{id}', [SiteController::class, 'destroy'])->middleware(['auth', 'verified'])->name('remover.site');
 Route::get('/site/{id}/edit', [SiteController::class, 'edit'])->middleware(['auth', 'verified'])->name('editar.site');
 Route::put('/site/{id}/edit', [SiteController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.site');
+Route::get('/site/{id}/img', [ImageController::class, 'show'])->middleware('auth')->name('site.imagens');
 
 
 Route::get('/users', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('usuarios');

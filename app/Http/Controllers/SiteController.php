@@ -64,7 +64,6 @@ class SiteController extends Controller
      */
     public function show(Site $site)
     {
-        //
     }
 
     /**
@@ -106,6 +105,6 @@ class SiteController extends Controller
     {
         $site = $site->findOrFail(HashService::decode($id));
         $site->delete();
-        return redirect()->route('sites')->toast('Site removido');
+        return back()->toast('Site removido');
     }
 }

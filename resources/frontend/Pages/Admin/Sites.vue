@@ -15,13 +15,22 @@
           <a :href="site.url" target="_blank">Ver <i-mdi-open-in-new /></a>
         </div>
         <div class="buttongroup">
-          <Link :href="route('editar.site', site.uid)"><i-mdi-edit /></Link>
-          <Link :href="route('remover.site', site.uid)"><i-mdi-delete /></Link>
+          <Link :href="route('editar.site', site.uid)" class="q-btn">
+            <i-mdi-edit />
+          </Link>
+          <q-btn @click="show(site.uid)">
+            <i-mdi-image />
+          </q-btn>
+          <q-btn @click="showConfirm(site)">
+            <i-mdi-delete />
+          </q-btn>
         </div>
       </li>
     </ul>
   </section>
   <Paginator :paginate="sites" />
+  <ImageModal :show="showImage" :uid="site" @onClose="showImage = false" />
+  <DeleteModal :show="showDelete" :info="site" @onClose="removeSite" />
 </template>
 
 <script setup>
@@ -29,7 +38,33 @@ const props = defineProps({
   title: String,
   sites: Object,
 });
+// import { Inertia } from "@inertiajs/inertia";
 import moment from "moment";
+let showImage = ref(false);
+let showDelete = ref(false);
+let site = ref();
+
+function show(site) {
+  this.site = site;
+  this.showImage = true;
+}
+
+function showConfirm(site) {
+  this.site = site;
+  this.showDelete = true;
+}
+
+function removeSite(confirmation) {
+  try {
+    if (confirmation) {
+      Inertia.delete(`/site/${site.value.uid}`);
+    }
+  } catch (error) {
+    console.log("erro =>", error);
+  } finally {
+    showDelete.value = false;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -44,6 +79,7 @@ section > div {
     }
   }
 }
+
 li {
   @apply tw-flex tw-flex-nowrap tw-p-2 tw-justify-between hover:tw-bg-neutral-100;
 
@@ -66,10 +102,11 @@ li {
   }
 
   .buttongroup {
-    @apply tw-whitespace-nowrap;
+    @apply tw-whitespace-nowrap tw-space-x-0.5;
 
-    a {
-      @apply tw-px-2 tw-py-1 tw-border;
+    a,
+    button {
+      @apply tw-px-3 tw-rounded;
 
       svg {
         @apply tw-inline tw-text-white;
@@ -78,6 +115,10 @@ li {
 
     a {
       @apply tw-bg-blue-500 hover:tw-bg-blue-600 tw-inline-block;
+    }
+
+    button {
+      @apply tw-bg-yellow-400 hover:tw-bg-yellow-500;
 
       &:last-child {
         @apply tw-bg-red-500 hover:tw-bg-red-600;
