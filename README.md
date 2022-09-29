@@ -1,6 +1,7 @@
 # **Inertia Js**
 
-Versão customizada do [ProntoStack](https://github.com/prontostack/pronto-fuel) alterando a contenização do vscode container para o docker e incluindo queue e nginx além de remover o debugger.
+Sistema com Crud de usuários e sites e listagem de imagens utilizando quasar e tailwind css.
+Sistema simples somente para estudo do Inertia Js
 
 ### Passo a passo
 Clone Repositório
