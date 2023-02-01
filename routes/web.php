@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class, 'home']);
 Route::get('/admin', [HomeController::class, 'admin'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/account', [HomeController::class, 'profile'])->middleware(['auth', 'verified'])->name('perfil');
 
-
+/* 
 Route::get('/sites', [SiteController::class, 'index'])->middleware(['auth', 'verified'])->name('sites');
 Route::get('/site', [SiteController::class, 'create'])->middleware(['auth', 'verified'])->name('criar.site');
 Route::post('/site', [SiteController::class, 'store'])->middleware(['auth', 'verified'])->name('criar.site');
@@ -40,4 +40,4 @@ Route::get('/user', [UserController::class, 'create'])->middleware(['auth', 'ver
 Route::post('/user', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('criar.usuario');
 Route::get('/user/{id}', [UserController::class, 'destroy'])->middleware(['auth', 'verified'])->name('remover.usuario');
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('editar.usuario');
-Route::put('/user/{id}/edit', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.usuario');
+Route::put('/user/{id}/edit', [UserController::class, 'update'])->middleware(['auth', 'verified'])->name('editar.usuario'); */
