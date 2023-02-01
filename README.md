@@ -6,7 +6,7 @@ Sistema simples somente para estudo do Inertia Js
 ### Passo a passo
 Clone Repositório
 ```
-git clone https://github.com/WylkerPorto/setup-laradocker.git NomeDoProjeto
+git clone https://github.com/WylkerPorto/inertia_estudo.git NomeDoProjeto
 ```
 
 Acesse o Repositório
