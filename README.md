@@ -1,17 +1,16 @@
 # **Inertia Js**
 
-Sistema com Crud de usuários e sites e listagem de imagens utilizando quasar e tailwind css.
-Sistema simples somente para estudo do Inertia Js
+Sistema de barbearia com agendamento de horario e login, sistema simples somente para estudo do Inertia Js
 
 ### Passo a passo
 Clone Repositório
 ```
-git clone https://github.com/WylkerPorto/inertia_estudo.git NomeDoProjeto
+git clone https://github.com/WylkerPorto/BarberStudio
 ```
 
 Acesse o Repositório
 ```
-cd NomeDoProjeto
+cd Hausfile
 ```
 
 Crie o Arquivo .env
@@ -21,8 +20,8 @@ cp .env.example .env
 
 Atualize as variáveis de ambiente do arquivo .env
 ```
-APP_NAME=NomeDoProjeto
-DB_DATABASE=NomeDoBanco
+APP_NAME=Hausfile
+DB_DATABASE=Hausfile
 DB_USERNAME=Usuario
 DB_PASSWORD=Senha
 ```

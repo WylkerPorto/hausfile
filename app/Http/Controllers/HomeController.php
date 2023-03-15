@@ -13,9 +13,7 @@ class HomeController extends Controller
     public function Home()
     {
         $data = [
-            'canLogin' => Route::has('login'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
+            'isLogged' => Auth::check(),
         ];
         return Inertia::render('Welcome', $data);
     }

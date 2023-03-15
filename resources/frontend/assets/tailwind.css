@@ -14,4 +14,8 @@
     a:focus {
         @apply tw-outline-1 tw-outline-primary-200;
     }
+
+    .backblue {
+        background: #4a7895;
+    }
 }

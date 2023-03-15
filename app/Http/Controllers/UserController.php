@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\Site;
 use App\Models\User;
 use App\Services\HashService;
 use Illuminate\Auth\Events\Registered;

@@ -14,8 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1)->admin()->create(['email' => 'localhost@localhost.com']);
+        \App\Models\User::factory(1)->create(['email' => 'localhost@localhost.com']);
         \App\Models\User::factory(5)->create();
-        \App\Models\User::factory(5)->admin()->create();
     }
 }

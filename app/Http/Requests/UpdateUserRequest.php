@@ -26,8 +26,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'string', 'email'],
-            'is_admin' => ['required', 'bool'],
-            'site_id' => ['nullable', 'string'],
+            'avatar' => ['nullable', 'string'],
         ];
     }
 }
