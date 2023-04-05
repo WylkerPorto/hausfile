@@ -55,14 +55,12 @@
           Forgot password
         </Link>
 
-        <q-btn
-          rounded
-          :disabled="form.processing"
-          type="submit"
-          class="backblue full-width text-white"
+        <Link
+          :href="route('register')"
+          class="backblue tw-text-white tw-w-full tw-block tw-text-center tw-p-2 tw-rounded-full"
         >
           New User
-        </q-btn>
+        </Link>
       </div>
     </form>
   </div>
@@ -132,9 +130,3 @@ const props = defineProps({
 
 const form = useForm(props.form);
 </script>
-
-<style lang="scss" scoped>
-.backblue {
-  background: #4a7895;
-}
-</style>

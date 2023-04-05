@@ -12,21 +12,18 @@ class HomeController extends Controller
 {
     public function Home()
     {
-        $data = [
-            'isLogged' => Auth::check(),
-        ];
-        return Inertia::render('Welcome', $data);
+        return Inertia::render('Welcome');
+    }
+
+    public function Dashboard()
+    {
+        $data = ['form' => Auth::user(), 'isLogged' => Auth::check()];
+        return Inertia::render('Dashboard', $data);
     }
 
     public function Admin()
     {
         $data = ['title' => 'Painel'];
         return Inertia::render('Admin/Home', $data);
-    }
-
-    public function Profile()
-    {
-        $data = ['title' => 'My Account', 'form' => Auth::user()];
-        return Inertia::render('Account', $data);
     }
 }

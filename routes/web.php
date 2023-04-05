@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +23,10 @@ Route::post('/notify', function () {
 
 Route::get('/detail/{id}', [HomeController::class, 'home']);
 
-Route::get('/dashboard', [HomeController::class, 'profile'])->middleware(['auth', 'verified'])->name('perfil');
+Route::get('/dashboard', [PropertyController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/property', [PropertyController::class, 'create'])->middleware(['auth', 'verified'])->name('create.property');
+Route::post('/property', [PropertyController::class, 'store'])->middleware(['auth', 'verified'])->name('create.property');
+Route::get('/property/{id}', [PropertyController::class, 'show'])->name('show.property');
+Route::get('/property/{id}/edit', [PropertyController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit.property');
+Route::post('/property/{id}/edit', [PropertyController::class, 'update'])->middleware(['auth', 'verified'])->name('edit.property');
+Route::delete('/property/{id}', [PropertyController::class, 'destroy'])->name('delete.property');

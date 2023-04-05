@@ -50,4 +50,16 @@ class User extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mp&s=" . '24';
     }
+
+    /**
+     * Get the property associated with the site.
+     * 
+     * Syntax: return $this->hasMany(Property::class, 'foreign_key', 'local_key');
+     *
+     * Example: return $this->hasMany(Property::class, 'user_id', 'id');        
+     */
+    public function property()
+    {
+        return $this->hasMany(Property::class);
+    }
 }
