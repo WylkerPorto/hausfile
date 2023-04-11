@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Property;
 use App\Services\HashService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class PropertyController extends Controller
@@ -19,7 +20,9 @@ class PropertyController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $properties = Property::where('user_id', $user->id)->paginate();
+        $properties = Property::where('user_id', $user->id)->with(['image' => function ($query) {
+            $query->first();
+        }])->paginate();
         foreach ($properties as $property) {
             $property->uid = HashService::encode($property->id);
             $property->user_id = HashService::encode($property->user_id);
@@ -90,9 +93,17 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        $property = Property::find(HashService::decode($id));
+        $property = Property::with('image')->find(HashService::decode($id));
         $property->uid = HashService::encode($property->id);
         $property->user_id = HashService::encode($property->user_id);
+
+        foreach ($property->image as $value) {
+            $value->uid = HashService::encode($value->id);
+            $value->property_id = HashService::encode($value->property_id);
+            unset($value->id);
+        }
+
+        // dd($property->image);
         unset($property->id);
 
         $data = ['property' => $property];
@@ -126,6 +137,9 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $property = Property::find(HashService::decode($id));
+        $path = public_path('storage/image/' . $id);
+        if (is_dir($path)) exec("rm -rf $path");
+
         $property->delete();
 
         return redirect()->route('dashboard')->toast('Property has been removed');

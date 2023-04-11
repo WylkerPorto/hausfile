@@ -23,6 +23,7 @@
     <section class="tw-flex tw-flex-col">
       <Link
         :href="route('delete.property', property.uid)"
+        as="button"
         method="delete"
         class="backorange tw-text-white tw-py-2 tw-px-4 tw-text-center tw-mb-2 hover:tw-text-white"
         >Delete</Link

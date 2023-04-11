@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
@@ -29,4 +30,7 @@ Route::post('/property', [PropertyController::class, 'store'])->middleware(['aut
 Route::get('/property/{id}', [PropertyController::class, 'show'])->name('show.property');
 Route::get('/property/{id}/edit', [PropertyController::class, 'edit'])->middleware(['auth', 'verified'])->name('edit.property');
 Route::post('/property/{id}/edit', [PropertyController::class, 'update'])->middleware(['auth', 'verified'])->name('edit.property');
-Route::delete('/property/{id}', [PropertyController::class, 'destroy'])->name('delete.property');
+Route::delete('/property/{id}', [PropertyController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete.property');
+
+Route::post('/image', [ImageController::class, 'store'])->middleware(['auth', 'verified'])->name('create.image');
+Route::delete('/image/{id}', [ImageController::class, 'destroy'])->middleware(['auth', 'verified'])->name('delete.image');

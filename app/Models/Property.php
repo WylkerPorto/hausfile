@@ -34,4 +34,16 @@ class Property extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the images associated with the property.
+     * 
+     * Syntax: return $this->hasMany(Image::class, 'foreign_key', 'local_key');
+     *
+     * Example: return $this->hasMany(Image::class, 'property_id', 'id');        
+     */
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
 }
